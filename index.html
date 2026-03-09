@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q3 Skills Test</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #dff6ff;
+      margin: 0;
+    }
+
+    .header {
+      background-color: #6a4c93;
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .main-box {
+      width: 900px;
+      margin: 30px auto;
+      background-color: white;
+      border: 4px solid #6a4c93;
+      padding: 20px;
+      box-shadow: 6px 6px 0px #b8e0f8;
+    }
+
+    .intro-box {
+      background-color: #ffe5ec;
+      border: 2px dashed #ff8fab;
+      padding: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .left-panel {
+      width: 40%;
+      float: left;
+    }
+
+    .right-panel {
+      width: 55%;
+      float: right;
+    }
+
+    .section-box {
+      background-color: #f7fff0;
+      border: 2px solid #8ac926;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: #1982c4;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .btn-place {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      background-color: #1982c4;
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn-place:hover {
+      background-color: #12679b;
+    }
+
+    .search-area {
+      margin-bottom: 15px;
+    }
+
+    .search-area input {
+      width: 68%;
+      padding: 10px;
+      border: 2px solid #6a4c93;
+    }
+
+    .search-area button {
+      width: 28%;
+      padding: 10px;
+      border: none;
+      background-color: #ffca3a;
+      font-weight: bold;
+    }
+
+    .output-box {
+      min-height: 180px;
+      background-color: #f1f8ff;
+      border: 2px solid #1982c4;
+      padding: 15px;
+      font-size: 17px;
+    }
+
+    .footer {
+      clear: both;
+      margin-top: 20px;
+      text-align: center;
+      background-color: #6a4c93;
+      color: white;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .small-text {
+      font-size: 14px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">Product Locator</div>
+
+  <div class="main-box">
+    <div class="intro-box">
+      <h2>Find a Computer Store</h2>
+      <p class="small-text">This simple page helps you search two computer store locations.</p>
+    </div>
+
+    <div class="left-panel">
+      <div class="section-box">
+        <div class="section-title">Search Store</div>
+        <div class="search-area">
+          <input type="text" id="searchInput" placeholder="Type VillMan or Silicon Valley">
+          <button onclick="searchStore()">Search</button>
+        </div>
+        <p class="small-text">You can also click one of the buttons below.</p>
+        <button class="btn-place" onclick="showStore('VillMan')">VillMan</button>
+        <button class="btn-place" onclick="showStore('Silicon Valley')">Silicon Valley</button>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="section-box">
+        <div class="section-title">Store Information</div>
+        <div class="output-box" id="outputBox">
+          Store details will appear here.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">Brielle Maglaqui | ICT Section | 2026</div>
+  </div>
+
+  <script>
+    // this function shows the store info when button is clicked
+    function showStore(storeName) {
+      var output = document.getElementById("outputBox");
+
+      if (storeName == "VillMan") {
+        output.innerHTML = "<b>Store Name:</b> VillMan Computers<br><br>" +
+                           "<b>Location:</b> Cyberzone, SM City Fairview Main Building<br><br>" +
+                           "<b>Products:</b> Laptops, desktops, accessories<br><br>" +
+                           "<b>Status:</b> Open for customers";
+      }
+      else if (storeName == "Silicon Valley") {
+        output.innerHTML = "<b>Store Name:</b> Silicon Valley<br><br>" +
+                           "<b>Location:</b> SM City North EDSA Annex, Quezon City<br><br>" +
+                           "<b>Products:</b> Computers, gadgets, and school tech items<br><br>" +
+                           "<b>Status:</b> Available for walk-in buyers";
+      }
+    }
+
+    // this function searches the typed store name
+    function searchStore() {
+      var searchText = document.getElementById("searchInput").value;
+      var output = document.getElementById("outputBox");
+      var searchWord = searchText.toLowerCase();
+
+      // checking if the typed word matches the store name
+      if (searchWord == "villman") {
+        showStore("VillMan");
+      }
+      else if (searchWord == "silicon valley") {
+        showStore("Silicon Valley");
+      }
+      else if (searchWord == "") {
+        output.innerHTML = "Please type a store name first.";
+      }
+      else {
+        output.innerHTML = "Sorry, store not found. Please type VillMan or Silicon Valley only.";
+      }
+    }
+  </script>
+
+</body>
+</html>
